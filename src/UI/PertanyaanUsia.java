@@ -18,7 +18,6 @@ public class PertanyaanUsia extends javax.swing.JFrame {
     //public static pertanyaan question =new pertanyaan();
     public PertanyaanUsia() {
 	initComponents();
-        eUsia.setVisible(false);
     }
 
     /**
@@ -33,7 +32,6 @@ public class PertanyaanUsia extends javax.swing.JFrame {
         next = new javax.swing.JButton();
         usia = new javax.swing.JTextField();
         cancel = new javax.swing.JButton();
-        eUsia = new javax.swing.JLabel();
         tanyaUsia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,14 +45,14 @@ public class PertanyaanUsia extends javax.swing.JFrame {
         });
 
         usia.setText("usia");
-        usia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usiaMouseClicked(evt);
-            }
-        });
         usia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 usiaFocusLost(evt);
+            }
+        });
+        usia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usiaMouseClicked(evt);
             }
         });
 
@@ -65,9 +63,6 @@ public class PertanyaanUsia extends javax.swing.JFrame {
             }
         });
 
-        eUsia.setForeground(new java.awt.Color(255, 0, 0));
-        eUsia.setText("Maaf, sistem ini dirancang untuk pasien dibawah 18 tahun");
-
         tanyaUsia.setText("Berapa usia pasien?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -75,46 +70,45 @@ public class PertanyaanUsia extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tanyaUsia)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(cancel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(next))
-                        .addComponent(eUsia)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(cancel)
+                        .addGap(18, 18, 18)
+                        .addComponent(next))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tanyaUsia))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(16, 16, 16)
                 .addComponent(tanyaUsia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(eUsia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(next)
                     .addComponent(cancel))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usiaMouseClicked
-        eUsia.setVisible(false);
-	usia.setText(null);
+        usia.setText(null);
     }//GEN-LAST:event_usiaMouseClicked
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         try{
         if (Integer.parseInt(usia.getText())>=18){
-            eUsia.setVisible(true);
+            JOptionPane.showMessageDialog(null,"Maaf, sistem dirancang untuk pasien dibawah 18 tahun.");
         }
         else if(Integer.parseInt(usia.getText())>0 && Integer.parseInt(usia.getText())<18) {
             //JOptionPane.showMessageDialog(null,"kondisi benar");
@@ -126,7 +120,7 @@ public class PertanyaanUsia extends javax.swing.JFrame {
         }
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,"maaf, input salah");
+            JOptionPane.showMessageDialog(null,"Maaf, input salah.");
         }
             
     }//GEN-LAST:event_nextMouseClicked
@@ -181,7 +175,6 @@ public class PertanyaanUsia extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel;
-    private javax.swing.JLabel eUsia;
     private javax.swing.JButton next;
     private javax.swing.JLabel tanyaUsia;
     private javax.swing.JTextField usia;
